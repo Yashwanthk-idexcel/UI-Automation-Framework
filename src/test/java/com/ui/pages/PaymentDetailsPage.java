@@ -1,0 +1,26 @@
+package com.ui.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import com.utility.BrowserUtil;
+
+public class PaymentDetailsPage extends BrowserUtil {
+	
+	private static final By PAYMENT_BY_WIRE_BUTTON_LOCATOR = By.xpath("//a[@title=\"Pay by bank wire\"]");
+	private static final By CONFIRM_PAYMENT_BUTTON_LOCATOR = By.xpath("//p[contains(@class,\"cart_nagivation\")]/button");
+	private static final By ALERT_SUCCESS_MESSAGE_LOCATOR = By.xpath("//p[contains(@class, \"success\")]");
+
+	public PaymentDetailsPage(WebDriver driver) {
+		super(driver);
+	}
+	
+	public String makePaymentByWire() {
+		clickOn(PAYMENT_BY_WIRE_BUTTON_LOCATOR);
+		clickOn(CONFIRM_PAYMENT_BUTTON_LOCATOR);
+		return getVisibleTest(ALERT_SUCCESS_MESSAGE_LOCATOR);
+	}
+	
+	
+
+}
